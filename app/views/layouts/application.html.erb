@@ -9,9 +9,57 @@
   </head>
 
   <body>
-  	<%= link_to "Home", root_path %>
-  	<%= link_to "Athlete Den", root_path %> 
+    <header role="banner">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+           <button type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+  	       <%= link_to "Athlete Den", root_path %> 
+          </div>
 
-    <%= yield %>
-  </body>
+        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+              <li class="active"><%= link_to "Home", root_path %></li>
+           </ul>
+
+            <ul class="nav navbar-nav nav navbar-right">
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <li><%= link_to "Sign in", new_user_session_path %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+
+              <%if user_signed_in? %>
+              <div clss="navbar-right">
+                <p class="navbar-text">
+                Signed in as <%= "#{current_user.email}" %>
+                </p>
+              </div>
+              <% end %>
+            </ul>
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>     
+      
+    <div class="row">
+      <div class="col-md-12">
+        <% flash.each do |key, message| %>
+          <div class="text-center alert
+                      alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
+
+  
+ </body>
 </html>

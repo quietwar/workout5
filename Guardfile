@@ -35,9 +35,7 @@ guard :rspec, cmd: "bin/rspec" do
   watch(rspec.spec_helper) { rspec.spec_dir }
   watch(rspec.spec_support) { rspec.spec_dir }
   watch(rspec.spec_files)
-  watch(%r{^app/models/(.+)\.rb$}) { |m| "spec/features/#{m[1]}s" }
-  watch(%r{^app/controllers/(.+)_(controller)\.rb$}) { |m| "spec/features/#{m[1]}" }
-  watch(rails.routes)          { "#{rspec.spec_dir}" }
+  
 
   # Ruby files
   ruby = dsl.ruby
@@ -55,11 +53,16 @@ guard :rspec, cmd: "bin/rspec" do
       rspec.spec.call("acceptance/#{m[1]}")
     ]
   end
-
+  watch(%r{^app/models/(.+)\.rb$}) { |m| "spec/features/#{m[1]}s" }
+  watch(%r{^app/controllers/(.+)_(controller)\.rb$}) { |m| "spec/features/#{m[1]}" }
+  watch(rails.routes)          { "#{rspec.spec_dir}" }
+  watch(%r{^app/views/layouts/application.html.erb$}) {"spec/features"}
+  
   # Rails config changes
   watch(rails.spec_helper)     { rspec.spec_dir }
   watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
   watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
+  watch(rails.view_dirs) { |m| "spec/features/#{m[1]}" }
 
   # Capybara features specs
   watch(rails.view_dirs)     { |m| rspec.spec.call("features/#{m[1]}") }
