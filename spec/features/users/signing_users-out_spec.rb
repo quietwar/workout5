@@ -1,6 +1,6 @@
 require "rails_helper"
  
-RSpec.feature "Users signout" do
+RSpec.feature "Signing users out" do
  
   before do
    
