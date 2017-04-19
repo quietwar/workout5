@@ -1,9 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Users signup" do
-
   scenario  "with valid credentials" do
-
     visit "/"
 
     click_link "Sign up"
@@ -13,7 +11,7 @@ RSpec.feature "Users signup" do
 
     click_button "Sign up"
 
-    #expect(page).to have_content("You have signed up successfully.")
+    expect(page).to have_content("You have signed up successfully.")
 
   end
 end

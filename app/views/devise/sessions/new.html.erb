@@ -1,11 +1,12 @@
 <h2 class='text-center'>Log in</h2>
+
 <div class='row'>
   <div class='col-md-12'>
 
     <%= form_for(resource, as: resource_name, :html => {class: "form-horizontal", role: "form"}, url: session_path(resource_name)) do |f| %>
       <div class='form-group'>
         <div class='control-label col-md-3'>
-          <%= f.label :email %><br />
+          <%= f.label :email %><br>
         </div>
         <div class='col-md-9'>
           <%= f.email_field :email, class: 'form-control', autofocus: true %>
@@ -14,7 +15,7 @@
 
       <div class='form-group'>
         <div class='control-label col-md-3'>
-          <%= f.label :password %><br />
+          <%= f.label :password %><br>
         </div>
         <div class='col-md-9'>
           <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
