@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417204853) do
+ActiveRecord::Schema.define(version: 20170421035336) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "coding"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20170417204853) do
     t.string  "project_details"
     t.date    "start_date"
     t.integer "user_id"
+    t.string  "email"
+    t.string  "password"
     t.index ["user_id"], name: "index_users_on_user_id"
   end
 

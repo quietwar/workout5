@@ -1,0 +1,51 @@
+<div class='row'>
+  <div class='col-md-12'>
+    <%= form_for([current_user, @project],
+    :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@project.errors.count, "error") %>
+          prohibited this project from being saved:</h2>
+
+          <ul>
+          <% @project.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class='form-group'>
+        <div class='control-label col-md-2'>
+          <%= f.label :coding, "Primary Langauge" %>
+        </div>
+        <div class='col-md-10'>
+          <%= f.number_field :duration_in_min, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <div class='control-label col-md-2'>
+          <%= f.label :project, "Project Details" %><br>
+        </div>
+        <div class='col-md-10'>
+          <%= f.text_area :user, class: 'form-control', rows: "10" %>
+        </div>
+      </div>
+      <div class='form-group'>
+        <div class='control-label col-md-2'>
+          <%= f.label :start_date, " date" %>
+        </div>
+        <div class='col-md-10'>
+          <%= f.text_field :completion_date, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <div class='col-md-offset-2 col-md-10'>
+          <%= f.submit class: 'btn btn-success btn-lg' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
