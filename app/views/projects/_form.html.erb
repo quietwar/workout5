@@ -10,23 +10,20 @@
           <ul>
           <% @project.errors.full_messages.each do |message| %>
             <li><%= message %></li>
-          <% end %>
+      <% end %>
           </ul>
         </div>
-      <% end %>
+    <% end %>
 
       <div class='form-group'>
         <div class='control-label col-md-2'>
           <%= f.label :coding, "Primary Langauge" %>
         </div>
-        <div class='col-md-10'>
-          <%= f.number_field :duration_in_min, class: 'form-control' %>
-        </div>
       </div>
 
       <div class='form-group'>
         <div class='control-label col-md-2'>
-          <%= f.label :project, "Project Details" %><br>
+          <%= f.label :project_details, "Description" %><br>
         </div>
         <div class='col-md-10'>
           <%= f.text_area :user, class: 'form-control', rows: "10" %>

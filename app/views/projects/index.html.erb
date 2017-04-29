@@ -1,7 +1,7 @@
 <% content_for(:whole_page) do %>
   <div class="col-md-7 col-xs-12">
   <% unless @projects.empty? %>
-    <h1>Listing Projects</h1>
+    <h1>Listing Apps</h1>
 
     <table class="table table-striped">
       <thead>
@@ -15,9 +15,9 @@
       <tbody>
         <% @projects.each do |project| %>
           <tr>
-            <td><%= exercise.duration_in_min %></td>
-            <td><%= truncate(exercise.workout, length: 100) %></td>
-            <td><%= exercise.workout_date %></td>
+            <td><%= project.project_details %></td>
+            <td><%= truncate(project.app, length: 100) %></td>
+            <td><%= project.start_date %></td>
             <td><%= link_to 'Show', [current_user, project] %></td>
             <td><%= link_to 'Edit', [:edit, current_user, project]
              %></td>
@@ -37,10 +37,9 @@
     </div>
     <br>
   <% end %>
-  <%= link_to 'New Workout', new_user_project_path(current_user),
+  <%= link_to 'New App', new_user_project_path(current_user),
       class: "btn btn-success link" %>
-
-  <%= content_tag :div, "", id: "chart", data: { projects: @projects } %>
+ <%= content_tag :div, "", id: "chart", data: { apps: @projects } %>
 </div>
 
 <div class="col-md-5 col-xs-12">
