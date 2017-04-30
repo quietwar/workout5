@@ -8,15 +8,15 @@ class User < ApplicationRecord
   has_many :exercises
   has_many :friendships
   has_many :friends, through: :friendships, class_name: "User"
-  has_one :room
+  has_one  :room
   has_many :messages
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-   
+
   #after_create :create_chatroom
 
-  #self.per_page = 10
+  self.per_page = 10
 
   def full_name
     [first_name, last_name].join(" ")
