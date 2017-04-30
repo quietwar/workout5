@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422051440) do
+ActiveRecord::Schema.define(version: 20170430002046) do
 
   create_table "chat_rooms", force: :cascade do |t|
     t.string   "title"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170422051440) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.string   "app_name"
     t.string   "coding"
     t.text     "project_details"
     t.date     "start_date"
@@ -48,8 +49,8 @@ ActiveRecord::Schema.define(version: 20170422051440) do
     t.string  "project_details"
     t.date    "start_date"
     t.integer "user_id"
-    t.string  "email"
-    t.string  "password"
+    t.string  "email",              default: "", null: false
+    t.string  "encrypted_password", default: "", null: false
     t.index ["user_id"], name: "index_users_on_user_id"
   end
 

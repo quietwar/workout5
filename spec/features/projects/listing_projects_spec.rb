@@ -7,13 +7,13 @@ RSpec.feature "Listing Project" do
 
     login_as(@john)
 
-    @p1 = @john.projects.create!(project_details: "",
-                                  projecct: "",
+    @p1 = @john.projects.create!(app_name: "",
+                                  coding: "",
                                   start_date: Date.today)
 
-    @p2 = @john.projects.create!(project_details: "",
-                                  project: "",
-                                  start_date: 2.days.ago)
+    @p2 = @john.projects.create!(app_name: "",
+                                  coding: "",
+                                  start_date: Date.today)
 
     #@following = Friendship.create(user: @john, friend: @sarah)
 
