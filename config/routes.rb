@@ -16,4 +16,8 @@ resources :dashboards, only: [:index] do
   end
 
   resources :friendships, only: [:show, :create, :destroy]
+  resources :messages, only: [:create]
+
+  mount ActionCable.server => '/cable'
+  
 end

@@ -7,11 +7,11 @@ RSpec.feature "Listing Projects" do
 
     login_as(@john)
 
-    @p1 = @john.projects.create!(app_name: "my app",
+    @p1 = @john.projects.create(app_name: "my app",
                                   coding: "ruby",
                                   start_date: Date.today)
 
-    @p2 = @john.projects.create!(app_name: "my app",
+    @p2 = @john.projects.create(app_name: "my app",
                                   coding: "ruby",
                                   start_date: Date.today)
 
@@ -45,7 +45,7 @@ RSpec.feature "Listing Projects" do
   scenario "shows no projects if none created" do
     @john.projects.delete_all
 
-    visit "/"
+    visit '/'
 
     click_link "My Lab"
 

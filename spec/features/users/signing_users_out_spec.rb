@@ -20,4 +20,5 @@ RSpec.feature "Signing users out" do
 
     expect(page).to have_content("Signed out successfully.")
   end
+  
 end

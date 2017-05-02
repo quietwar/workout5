@@ -16,4 +16,4 @@ jQuery(document).on 'turbolinks:load', ->
       # Data received
 
     send_message: (message, chat_room_id) ->
-      @perform 'send_message', message: message, chat_room_id: chat_room_id
+    @perform 'send_message', message: message, chat_room_id: chat_room_id
