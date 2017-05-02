@@ -1,21 +1,21 @@
 require "rails_helper"
 
-RSpec.feature "Listing Project" do
+RSpec.feature "Listing Projects" do
   before do
     @john =  User.create!(first_name: "John", last_name: "Doe", email: "john@example.com", password: "password")
     @sarah = User.create!(first_name: "Sarah", last_name: "Anderson", email: "sarah@example.com", password: "password")
 
     login_as(@john)
 
-    @p1 = @john.projects.create!(app_name: "",
-                                  coding: "",
+    @p1 = @john.projects.create!(app_name: "my app",
+                                  coding: "ruby",
                                   start_date: Date.today)
 
-    @p2 = @john.projects.create!(app_name: "",
-                                  coding: "",
+    @p2 = @john.projects.create!(app_name: "my app",
+                                  coding: "ruby",
                                   start_date: Date.today)
 
-    #@following = Friendship.create(user: @john, friend: @sarah)
+    @following = Friendship.create(user: @john, friend: @sarah)
 
      #@p3 = @john.projects.create(project_details: "",
      #                               project: "",
@@ -23,22 +23,22 @@ RSpec.feature "Listing Project" do
 
   end
 
-  scenario "shows user's projects for last 7 days" do
+  scenario "show all of user's apps" do
     visit '/'
 
     click_link "My Lab"
 
-    expect(page).to have_content(@p1.project_details)
-    expect(page).to have_content(@p1.project)
+    expect(page).to have_content(@p1.app_name)
+    expect(page).to have_content(@p1.coding)
     expect(page).to have_content(@p1.start_date)
 
-    expect(page).to have_content(@p2.project_details)
-    expect(page).to have_content(@p2.project)
+    expect(page).to have_content(@p2.app_name)
+    expect(page).to have_content(@p2.coding)
     expect(page).to have_content(@p2.start_date)
 
     # expect(page).not_to have_content(@e3.duration_in_min)
     # expect(page).not_to have_content(@e3.workout)
-    # expect(page).not_to have_content(@e3.workout_date)
+    # expect(page).not_to have_connt(@e3.workout_date)
 
   end
 
@@ -47,7 +47,7 @@ RSpec.feature "Listing Project" do
 
     visit "/"
 
-    click_link 'My Lsb'
+    click_link "My Lab"
 
     expect(page).to have_content('No Apps Yet')
   end

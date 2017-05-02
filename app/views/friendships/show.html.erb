@@ -1,0 +1,37 @@
+<div class="col-md-7 col-xs-12">
+  <p id="notice"><%= notice %></p>
+
+    <h1><%= @friend.full_name %>'s Projects</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>App name</th>
+          <th>Langauge</th>
+          <th>Start date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= project.project_details %></td>
+            <td><%= truncate(project.app, length: 100) %></td>
+            <td><%= project.start_date %></td>
+            <td><%= link_to 'Show', [current_user, project] %></td>
+            <td><%= link_to 'Edit', [:edit, current_user, project]%></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= content_tag :div, "", id: "chart", data: { apps: @projects } %>
+
+    <br>
+
+    <%= link_to "Back", user_projects_path(current_user),
+            class: "btn btn-success btn-lg link" %>
+</div>
+ 

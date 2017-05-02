@@ -21,7 +21,7 @@ var drawChart = function() {
   var parseTime = d3.timeParse("%Y-%m-%d");
 
   var appFn = function(d) { return p.language }
-  var dateFn = function(d) { return parseTime(d.workout_date) }
+  var dateFn = function(d) { return parseTime(d.start_date) }
 
   var x = d3.scaleTime()
     .range([0, width])
@@ -31,13 +31,13 @@ var drawChart = function() {
     .range([height, 0])
     .domain([0, d3.max(data, appFn)])
 
-  var workout_line = d3.line()
-      .x(function(d) { return x(d.workout_date); })
-      .y(function(d) { return y(d.duration_in_min);  });
+  var app_line = d3.line()
+      .x(function(d) { return x(d.start_date); })
+      .y(function(d) { return y(d.submit_date);  });
 
   data.forEach(function(d) {
-    d.workout_date = parseTime(d.workout_date);
-    d.duration_in_min = +d.duration_in_min;
+    d.app_date = parseTime(d.start_date);
+    d.start_date = +d.sumbit_date;
   });
 
   var svg = d3.select("#chart").append("svg")
@@ -48,7 +48,7 @@ var drawChart = function() {
 
     svg.append("path")
         .attr("class", "line")
-        .attr("d", workout_line(data));
+        .attr("d", app_line(data));
 
   svg.append("g")
    .attr("class", "x axis")

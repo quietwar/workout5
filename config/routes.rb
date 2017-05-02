@@ -6,7 +6,14 @@ root to: "dashboards#index"
 
 	resources :users do
 		resources :projects
+end
 
-	end
+resources :dashboards, only: [:index] do
+    collection  do
 
+      post :search, to: 'dashboards#search'
+    end
+  end
+
+  resources :friendships, only: [:show, :create, :destroy]
 end

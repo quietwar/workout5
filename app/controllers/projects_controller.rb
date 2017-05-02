@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = current_user.projects
+    @friends = current_user.friends
   end
 
   def show
@@ -49,5 +50,5 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.find params[:id]
   end
 
-  def project_params(:project).permit(:coding, :project, :project_details, :user_id,)
+  def project_params(:project).permit(:app_name, :coding, :project, :project_details, :user_id,)
 end
